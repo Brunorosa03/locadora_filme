@@ -1,10 +1,13 @@
 {
   "name": "locadora_filme",
   "version": "1.0.0",
+  "type": "module",
   "description": "Software de um locadora, na qual possui um sistema de cadastramento com permissões utilizando o gmail e a possibilidade de locar um filme.",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",

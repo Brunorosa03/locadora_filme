@@ -1,8 +1,8 @@
 import express from "express";
 import "dotenv/config";
 import movie_route from "./routes/movie_route.js";
-import rented_router from "./routes/rented-route.js";
-import user_router from "./routes/user-route.js";
+import rented_router from "./routes/rented_route.js";
+import user_router from "./routes/user_route.js";
 
 const app = express();
 
