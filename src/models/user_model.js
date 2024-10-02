@@ -22,6 +22,18 @@ const userSchema = new db.Schema({
     required: true,
     default: "USU",
   },
+    phone: {
+      type: Number,
+      required: true,
+  },
+  addres: {
+    type: String,
+    required: true,
+  },
+  house_number: {
+    type: Number,
+    required: true,
+  }
 });
 
 userSchema.pre("save", async function () {

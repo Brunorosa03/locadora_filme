@@ -8,8 +8,8 @@ import {
 
 } from "../controllers/movie_controller.js";
 
-import check_token from "../middleware/check_token.js";
-import check_role from "../middleware/check_role.js"
+import check_token from "../middlerware/check_token.js";
+import check_role from "../middlerware/check_role.js"
 
 const router = Router();
 

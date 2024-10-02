@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+import db from "../config/db.js";
 
-const rentedSchema = new mongoose.Schema({
+const rentedSchema = new db.Schema({
     rente_by: { 
-        type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true 
+        type: db.Schema.Types.ObjectId, ref: 'User', required: true 
     },
     movie_rented: { 
-        type: mongoose.Schema.Types.ObjectId, ref: 'Movie', required: true
+        type: db.Schema.Types.ObjectId, ref: 'Movie', required: true
     },
     rent_date: {
         type: Date, default: Date.now 
