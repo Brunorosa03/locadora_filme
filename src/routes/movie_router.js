@@ -6,15 +6,15 @@ import {
     update,
     destroy,
 
-} from "../controllers/movie_controller.js";
+} from "../controllers/movie_controler.js";
 
-import check_token from "../middlerware/check_token.js";
-import check_role from "../middlerware/check_role.js"
+import check_token from "../middleware/check_token.js";
+import check_role from "../middleware/check_role.js"
 
 const router = Router();
 
-router.post("/", check_token, check_role(["ADM"]), store); 
-router.get("/", check_token, check_role(["USU"]), index); 
+router.post("/", check_token, check_role(["ADM"]), store);
+router.get("/", check_token, check_role(["USU"]), index);
 router.get("/:id", check_token, show);
 router.put("/:id", check_token, update);
 router.delete("/:id", check_token, destroy);

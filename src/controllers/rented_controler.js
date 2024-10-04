@@ -1,8 +1,8 @@
-import Rented from "../models/movie_model.js";
+import rented from "../models/rented_model.js";
 
 export const store = async (req, res) => {
     try {
-        const content = await Rented.create(req.body);
+        const content = await rented.create(req.body);
         res.status(201).json(content);
     } catch (error) {
         res.status(400).send(error);
@@ -11,7 +11,7 @@ export const store = async (req, res) => {
 
 export const index = async (req, res) => {
     try {
-        const content = await Rented.find(req.query).exec();
+        const content = await rented.find(req.query).exec();
         res.json(content);
     } catch (error) {
         res.status(400).send(error);
@@ -20,7 +20,7 @@ export const index = async (req, res) => {
 
 export const show = async (req, res) => {
     try {
-        const content = await Rented.findById(req.params.id).exec();
+        const content = await rented.findById(req.params.id).exec();
         res.json(content);
     } catch (error) {
         res.status(400).send(error);
@@ -29,19 +29,19 @@ export const show = async (req, res) => {
 
 export const update = async (req, res) => {
     try {
-        const content = await Rented.findByIdAndUpdate(
+        const content = await rented.findByIdAndUpdate(
         req.params.id,
         req.body
     ).exec();
         res.json(content);
     } catch (error) {
-    res.status(400).send(error);
+        res.status(400).send(error);
     }
 };
 
 export const destroy = async (req, res) => {
     try {
-        const content = await Rented.findByIdAndDelete(req.params.id).exec();
+        const content = await rented.findByIdAndDelete(req.params.id).exec();
         res.json(content);
     } catch (error) {
         res.status(400).send(error);

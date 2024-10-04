@@ -1,20 +1,24 @@
 import db from "../config/db.js";
 
 const rentedSchema = new db.Schema({
-    rente_by: { 
-        type: db.Schema.Types.ObjectId, ref: 'User', required: true 
+    rente_by: {
+        type: String,
+        required: true,
     },
-    movie_rented: { 
-        type: db.Schema.Types.ObjectId, ref: 'Movie', required: true
+    movie_rented: {
+        type: Number,
+        required: true,
     },
-    rent_date: {
-        type: Date, default: Date.now 
+    rent_date:{
+        type: Number,
+        required: true,
     },
-    return_date: { 
-        type: Date 
+    return_date:{
+        type:Number,
+        required: true,
     }
 });
 
-const Rented = db.model("Rentend", rentedSchema);
+const rented = db.model("rented",rentedSchema);
 
-export default Rented;
+export default rented;
