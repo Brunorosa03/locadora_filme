@@ -9,7 +9,7 @@ const userSchema = new Schema({
         type: String,
         unique: true,
         required: true,
-    validate: {
+        validate: {
         validator: (v) => /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v),
         message: "Invalid email format",
     },

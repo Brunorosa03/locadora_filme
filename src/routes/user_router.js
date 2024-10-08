@@ -10,7 +10,7 @@ import viaCep from "../middleware/via_cep.js";
 
 const router = Router();
 
-router.post("/signup", viaCep, signup);
+router.post("/signup", signup);
 router.post("/login", login);
 
 export default router;
