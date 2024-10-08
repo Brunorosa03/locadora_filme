@@ -12,12 +12,12 @@ function check_token(req, res, next) {
 
     try {
         req.user = jwtService.verifyAccessToken(token);
+        console.log(req.user);
+        next();
     } catch (error) {
         console.log(error)
         res.status(401).json("Token inválido");
     }
-
-next();
 }
 
 export default check_token;

@@ -1,50 +1,39 @@
-import db from "../config/db.js";
+import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 
-const userSchema = new db.Schema({
-    nome: {
-        type: String,
-        required: false,
-    },
+const userSchema = new Schema({
+    name: { 
+        type: String, required: true },
+        birthday_date: { type: Date, required: true },
     email: {
         type: String,
-        required: true,
         unique: true,
-    },
-    password: {
-        type: String,
         required: true,
-        minLength: 5,
+    validate: {
+        validator: (v) => /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v),
+        message: "Invalid email format",
     },
-    tipo: {
+    },
+    password: { type: String, required: true },
+        permission_type: {
         type: String,
-        enum: ["ADM", "USU"],
-        required: false,
-        default: "USU",
+    enum: ["USER", "ADMIN"],
+        default: "USER",
+        required: true,
     },
-    phones: {
-        type: Number,
-        required: false,
-    },
-    addres: {
-        type: String,
-        required:false,
-    },
-    house_number: {
-        type: Number,
-        required: false
-    },
+    phones: { type: [String] },
+    address: { type: String },
+    house_number: { type: String },
 });
 
 userSchema.pre("save", async function () {
-
     this.password = await bcrypt.hash(this.password, 10);
 });
 
-userSchema.methods.senhaCorreta = async function (senha) {
-    return await bcrypt.compare(senha, this.password);
+userSchema.methods.isValidPassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
 };
 
-const User = db.model("User", userSchema);
+const User = model("User", userSchema);
 
 export default User;

@@ -1,12 +1,17 @@
-import movie from "../models/movie_model.js";
+import Movie from "../models/movie_model.js";
 
 export const store = async (req, res) => {
     try {
-        const content = await movie.create(req.body);
-        res.status(201).json(content);
-    } catch (error) {
-        res.status(400).send(error);
-    }
+        const movie = await Movie.create({
+            name: req.body.name,
+            release_date: req.body.release_date,
+            director: req.body.director,
+            classification: req.body.classification
+        });
+            res.status(201).json(movie);
+        } catch (error) {
+            res.status(400).send(error);
+        }
 };
 
 export const index = async (req, res) => {
